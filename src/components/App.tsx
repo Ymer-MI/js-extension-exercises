@@ -23,21 +23,18 @@ export default () => {
     </form>
     <p></p>
     <ul>
-      { objs.map((o, i) => 
-          <li className='flex-row person' key={ o.id }>
-            { o.id < 10 && 
-              <>
-                <h3 className='heading'>{ o.name }</h3>
-                <span>{ o.age }</span>
-                <input type='checkbox' onChange={ () => { !objs[i].isMarried; setObjs([...objs]) } } checked={ o.isMarried } disabled></input>
-                <button onClick={ () => { const temp=[...objs]; ++temp[i].age; setObjs(temp) } }>Happy Birthday!</button>
-                <button onClick={ () => { objs.splice(i, 1); setObjs([...objs]) } }>Remove</button>
-              </>
-            /*  : (
-              <span>Too little space to render more people.</span>
-            ) */ }
-          </li>
-        ) }
+      {objs.map((o, i) => /* { */ o.id < 10 && 
+        <li className='flex-row person' key={ o.id }>
+          <h3 className='heading'>{ o.name }</h3>
+          <span>{ o.age }</span>
+          <input type='checkbox' onChange={ () => { !objs[i].isMarried; setObjs([...objs]) } } checked={ o.isMarried } disabled></input>
+          <button onClick={ () => { const temp=[...objs]; ++temp[i].age; setObjs(temp) } }>Happy Birthday!</button>
+          <button onClick={ () => { objs.splice(i, 1); setObjs([...objs]) } }>Remove</button>
+        </li>
+        /*  : (
+          <span>Too little space to render more people.</span>
+        ) } */
+      )}
     </ul>
   </>
 }
