@@ -25,7 +25,7 @@ export default () => {
     <ul>
       { objs.map((o, i) => 
           <li className='flex-row person' key={ o.id }>
-            { o.id < 10 ? (
+            { o.id < 10 && 
               <>
                 <h3 className='heading'>{ o.name }</h3>
                 <span>{ o.age }</span>
@@ -33,9 +33,9 @@ export default () => {
                 <button onClick={ () => { const temp=[...objs]; ++temp[i].age; setObjs(temp) } }>Happy Birthday!</button>
                 <button onClick={ () => { objs.splice(i, 1); setObjs([...objs]) } }>Remove</button>
               </>
-            ) : (
+            /*  : (
               <span>Too little space to render more people.</span>
-            ) }
+            ) */ }
           </li>
         ) }
     </ul>
