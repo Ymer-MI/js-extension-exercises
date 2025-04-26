@@ -13,7 +13,6 @@ export default () => {
       {"id": 8, "name": "Hank", "age": 29, "isMarried": false},
       {"id": 9, "name": "Ivy", "age": 38, "isMarried": true},
       {"id": 10, "name": "Jack", "age": 27, "isMarried": false}
-    
   ]), [newObj, setNewObj] = useState<{id: number, name: string, age: number, isMarried: boolean}>({ id: 0, name: '', age: 0, isMarried: false });
 
   return <>
