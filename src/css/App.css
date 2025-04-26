@@ -1,0 +1,56 @@
+* {
+    --padding-button: 5px 7.5px;
+
+    
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    gap: 10px;
+
+    .person {
+
+        > * {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            padding: var(--padding-button);
+        }
+
+        span {
+            min-width: 1.5em;
+        }
+
+        .heading {
+            display: inline;
+            min-width: 7.5em;
+            text-align: left;
+        }
+
+        input[type="checkbox"] {
+            min-width: 1.5em;
+            min-height: 1.5em;
+        }
+    }
+}
+
+button {
+    padding: var(--padding-button);
+}
+
+input[type="number"] {
+    width: 3em;
+}
+
+.flex-row { 
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
