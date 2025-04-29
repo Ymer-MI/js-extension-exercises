@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import '../css/App.css'
+import Child from './Child';
 
 export default () => {
   const [objs, setObjs] = useState<{id: number, name: string, age: number, isMarried: boolean}[]>([
@@ -15,15 +16,22 @@ export default () => {
       {"id": 10, "name": "Jack", "age": 27, "isMarried": false}
   ]), [newObj, setNewObj] = useState<{id: number, name: string, age: number, isMarried: boolean}>({ id: 0, name: '', age: 0, isMarried: false });
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { id, type, value } = e.target;
+
+    setNewObj({ ...newObj, [id]: type === 'number' ? +value : value });
+  }
+
   return <>
+    {Child({ name: objs[0].name , age: objs[0].age })}
     <form className='flex-row' onSubmit={(e) => { e.preventDefault(); setObjs([...objs, {...newObj, id: ++objs.length }]) }}>
-      <input type='text' onChange={ (e) => { setNewObj({ ...newObj, name: e.target.value }) } }/>
-      <input type='number' onChange={ (e) => { setNewObj({ ...newObj, age: +e.target.value }) } } />
+      <input id="name" type='text' onChange={handleChange} value={newObj.name}/>
+      <input id="age" type='number' onChange={handleChange} value={newObj.age}/>
       <button type='submit'>Add person</button>
     </form>
     <p></p>
     <ul>
-      {objs.map((o, i) => /* { */ o.id < 10 && 
+      {objs.map((o, i) => /* { */ /* o.id < 10 && */ 
         <li className='flex-row person' key={ o.id }>
           <h3 className='heading'>{ o.name }</h3>
           <span>{ o.age }</span>
